@@ -3,6 +3,8 @@ A calculator app
 
 added Addition functionality
 added Multiplication functionality
+added Division functionality
+added subtraction functionality
 
 
 Linux permissions used
