@@ -7,19 +7,40 @@ read num1
 echo "Enter second number:"
 read num2
 
+# Validate that inputs are numbers
+if ! [[ "$num1" =~ ^-?[0-9]+$ ]] || ! [[ "$num2" =~ ^-?[0-9]+$ ]]; then
+    echo "Error: Please enter valid integer numbers."
+    exit 1
+fi
+
 # Let the user choose an operation
 echo "Choose an operation:"
 echo "1. Addition"
 echo "2. Multiplication"
+echo "3. Division"
 read choice
 
 # Perform the selected operation
-if [ "$choice" -eq 1 ]; then
-    result=$((num1 + num2))
-    echo "Sum = $result"
-elif [ "$choice" -eq 2 ]; then
-    result=$((num1 * num2))
-    echo "Product = $result"
-else
-    echo "Invalid choice! Please select 1 or 2."
-fi
+case "$choice" in
+    1)
+        result=$((num1 + num2))
+        echo "Sum = $result"
+        ;;
+    2)
+        result=$((num1 * num2))
+        echo "Product = $result"
+        ;;
+    3)
+        # Handle division by zero
+        if [ "$num2" -eq 0 ]; then
+            echo "Error: Division by zero is not allowed."
+            exit 1
+        fi
+
+        result=$((num1 / num2))
+        echo "Quotient = $result"
+        ;;
+    *)
+        echo "Invalid choice! Please select 1, 2, or 3."
+        ;;
+esac
