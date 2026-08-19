@@ -18,6 +18,7 @@ echo "Choose an operation:"
 echo "1. Addition"
 echo "2. Multiplication"
 echo "3. Division"
+echo "4. Subtraction"
 read choice
 
 # Perform the selected operation
@@ -40,7 +41,11 @@ case "$choice" in
         result=$((num1 / num2))
         echo "Quotient = $result"
         ;;
+    4)
+        result=$((num1 - num2))
+        echo "Difference = $result"
+        ;;
     *)
-        echo "Invalid choice! Please select 1, 2, or 3."
+        echo "Invalid choice! Please select 1, 2, 3, or 4."
         ;;
 esac
